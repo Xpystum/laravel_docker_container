@@ -20,6 +20,16 @@ services:
     depends_on:
       - db
 
+  redis-cache:
+    image: redis:latest
+    restart: always
+    ports:
+    - "6379:6379"
+    command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
+    volumes:
+    - ./tmp/redis:/data
+    container_name: jobs_redis
+
   db:
     image: postgres:latest
     restart: always
