@@ -15,12 +15,13 @@ services:
       context: .
       dockerfile: _docker/app/DockerFile
     volumes:
-      - ./:/var/www
+      - ./:/var/www/html
     container_name: jobs_laravel
     depends_on:
       - db
+      - redis
 
-  redis-cache:
+  redis:
     image: redis:latest
     restart: always
     ports:
@@ -29,6 +30,7 @@ services:
     volumes:
     - ./tmp/redis:/data
     container_name: jobs_redis
+
 
   db:
     image: postgres:latest

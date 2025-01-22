@@ -9,7 +9,6 @@ class TestController extends Controller
 {
     public function test()
     {
-        dd(1);
         if(Cache::get('key'))
         {
             dd(Cache::get('key'));
