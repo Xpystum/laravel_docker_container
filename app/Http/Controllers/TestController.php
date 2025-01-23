@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\TestJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -9,16 +10,8 @@ class TestController extends Controller
 {
     public function test()
     {
-        if(Cache::get('key'))
-        {
-            dd(Cache::get('key'));
+        dispatch(new TestJob())->delay(now()->addSeconds(5));
 
-        } else {
-
-            Cache::set('key', 5);
-
-        }
-
-        return Cache::get('key');
+        return response(now());
     }
 }

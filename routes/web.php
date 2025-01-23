@@ -3,8 +3,8 @@
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [TestController::class , 'test']);
+Route::get('/test', [TestController::class , 'test']);
 
-// Route::get('/', function () {
-//     return route('welcome');
-// });
+Route::get('/', function () {
+    return 1;
+});

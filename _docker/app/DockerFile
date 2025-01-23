@@ -42,4 +42,4 @@ ENV PATH $PATH:/composer/vendor/bin
 RUN composer config --global process-timeout 3600
 
 # Установка рабочей директории
-WORKDIR /var/www/html
+WORKDIR /var/www
