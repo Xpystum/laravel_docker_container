@@ -180,7 +180,7 @@ return [
     */
 
     'defaults' => [
-        'supervisor-1' => [
+        'default' => [
             'connection' => 'redis',
             'queue' => ['default'],
             'balance' => 'auto',
@@ -193,20 +193,88 @@ return [
             'timeout' => 60,
             'nice' => 0,
         ],
+
+        'notification' => [
+            'connection' => 'redis',
+            'queue' => ['notification', 'newletter'],
+            'balance' => 'auto',
+            'autoScalingStrategy' => 'time',
+            'maxProcesses' => 5,
+            'maxTime' => 0,
+            'maxJobs' => 0,
+            'memory' => 128,
+            'tries' => 1,
+            'timeout' => 60,
+            'nice' => 0,
+        ],
+
+        'balance' => [
+            'connection' => 'redis',
+            'queue' => ['balance1', 'balance2'],
+            'balance' => 'auto',
+            'autoScalingStrategy' => 'time',
+            'maxProcesses' => 20,
+            'maxTime' => 0,
+            'maxJobs' => 0,
+            'memory' => 128,
+            'tries' => 1,
+            'timeout' => 60,
+            'nice' => 0,
+        ],
+
+        'products' => [
+            'connection' => 'redis',
+            'queue' => ['products'],
+            'balance' => 'auto',
+            'autoScalingStrategy' => 'time',
+            'maxProcesses' => 2,
+            'maxTime' => 0,
+            'maxJobs' => 0,
+            'memory' => 128,
+            'tries' => 1,
+            'timeout' => 60,
+            'nice' => 0,
+        ],
     ],
 
     'environments' => [
         'production' => [
-            'supervisor-1' => [
+
+            'default' => [
                 'maxProcesses' => 10,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
+
+            'notification' => [
+
+            ],
+
+            'balance' => [
+
+            ],
+
+            'products' => [
+
+            ],
         ],
 
         'local' => [
-            'supervisor-1' => [
+
+            'default' => [
                 'maxProcesses' => 3,
+            ],
+
+            'notification' => [
+
+            ],
+
+            'balance' => [
+
+            ],
+
+            'products' => [
+
             ],
         ],
     ],
