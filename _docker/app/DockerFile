@@ -2,6 +2,7 @@ FROM php:8.3-fpm
 
 # Установка зависимостей для Linux под проект Laravel с PostgreSQL
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    apt-get install -y openssh-client \
     supervisor \
     curl \
     apt-utils \
